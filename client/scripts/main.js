@@ -1,6 +1,6 @@
 import Chessground from "https://dev.jspm.io/chessground";
 const { Chess } = (await import("https://dev.jspm.io/chess.js")).default;
-import { toDests, playOtherSide } from "./util.js";
+import { toDests, toColor } from "./util.js";
 
 const el = document.querySelector("#board-container");
 
@@ -10,12 +10,26 @@ const cg = Chessground(el, {
         color: "white",
         free: false,
         dests: toDests(chess),
+        showDests: false,
     },
-    draggable: {
-        showGhost: true
-    }
 });
 cg.set({
-    movable: { events: { after: playOtherSide(cg, chess) } }
+    movable: {
+        events: {
+            after: function playOtherSide(orig, dest) {
+                chess.move({from: orig, to: dest});
+                postMessage({
+                    chess
+                }, "*");
+                // cg.set({
+                //     // turnColor: toColor(chess),
+                //     movable: {
+                //         // color: toColor(chess),
+                //         // dests: toDests(chess)
+                //     }
+                // });
+            }
+        }
+    }
 });
  
