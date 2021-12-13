@@ -9,18 +9,17 @@ export function toDests(chess) {
 
 export function toColor(chess) {
     return (chess.turn() === 'w') ? 'white' : 'black';
-
-    }
+}
 
 export function playOtherSide(cg, chess) {
     return (orig, dest) => {
         chess.move({from: orig, to: dest});
         cg.set({
-        turnColor: toColor(chess),
-        movable: {
-            color: toColor(chess),
-            dests: toDests(chess)
-        }
+            turnColor: toColor(chess),
+            movable: {
+                color: toColor(chess),
+                dests: toDests(chess)
+            }
         });
     };
 }
@@ -38,6 +37,9 @@ export function aiPlay(cg, chess, delay, firstMove) {
                 movable: {
                     color: toColor(chess),
                     dests: toDests(chess)
+                },
+                highlight: {
+                    check: true
                 }
             });
             cg.playPremove();

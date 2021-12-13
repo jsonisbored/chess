@@ -18,3 +18,4 @@ const cg = Chessground(el, {
 cg.set({
     movable: { events: { after: playOtherSide(cg, chess) } }
 });
+ 
