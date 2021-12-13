@@ -36,11 +36,11 @@ export function aiPlay(cg, chess, delay, firstMove) {
             cg.set({
                 turnColor: toColor(chess),
                 movable: {
-                color: toColor(chess),
-                dests: toDests(chess)
-            }
-        });
-        cg.playPremove();
+                    color: toColor(chess),
+                    dests: toDests(chess)
+                }
+            });
+            cg.playPremove();
         }, delay);
     };
 }
