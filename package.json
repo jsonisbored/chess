@@ -1,8 +1,9 @@
 {
   "name": "chess",
   "version": "1.0.0",
-  "description": "Chess test",
-  "main": "index.html",
+  "description": "",
+  "main": "client/main.html",
+  "type": "module",
   "scripts": {
     "start": "serve",
     "build": "echo This is a static template, there is no bundler or bundling involved!"
@@ -19,5 +20,6 @@
   "homepage": "https://github.com/codesandbox-app/static-template#readme",
   "devDependencies": {
     "serve": "^11.2.0"
-  }
+  },
+  "keywords": []
 }
