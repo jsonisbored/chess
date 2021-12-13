@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>New webpage</title>
+	</head>
+	<body>
+		<style>
+			
+		</style>
+
+		<div id="board-container"></div>
+		
+		<script src="/js/main.js" type="module">
+			import Chessground from "https://dev.jspm.io/chessground";
+
+			const container = document.querySelector("#board-container");
+			const cg = Chessground(container, {
+				movable: {
+					color: 'white',
+					free: false,
+					// dests: util.toDests(game),
+				},
+				draggable: {
+					showGhost: true
+				}
+			});
+			cg.set({
+				movable: { events: { after: util.playOtherSide(cg, game) } }
+			});
+		</script>
+	</body>
+</html>
